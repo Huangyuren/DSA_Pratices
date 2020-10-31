@@ -1,6 +1,3 @@
-#include <bits/stdc++.h>
-using namespace std;
-
 class Solution {
 public:
     void printresult(vector<vector<int>> &inputs) {
@@ -15,15 +12,16 @@ public:
     void floydWarshall(vector<vector<int>> &weights, vector<vector<int>> &graph, int n) {
         for(int k=0; k<n; ++k) {
             for(int i=0; i<n; ++i) {
-                for(int j=0; j<n && j!=i; ++j) {
-                    if(graph[i][k] && graph[k][j]) {
-                        if(weights[i][j] > weights[i][k]+weights[k][j]) {
-                            weights[i][j] = weights[i][k]+weights[k][j];
-                            weights[j][i] = weights[i][k]+weights[k][j];
-                            graph[i][j] = 1;
-                            graph[j][i] = 1;
-                        }
-                    }
+                for(int j=0; j<n; ++j) {
+                    weights[i][j] = min(weights[i][j], weights[i][k]+weights[k][j]);
+                    // if(graph[i][k] && graph[k][j]) {
+                        // if(weights[i][j] > weights[i][k]+weights[k][j]) {
+                        //     weights[i][j] = weights[i][k]+weights[k][j];
+                        //     weights[j][i] = weights[i][k]+weights[k][j];
+                        //     graph[i][j] = 1;
+                        //     graph[j][i] = 1;
+                        // }
+                    // }
                 }
             }
         }
@@ -35,14 +33,14 @@ public:
             rowid = edges[i][0], colid = edges[i][1];
             weights[rowid][colid] = edges[i][2];
             weights[colid][rowid] = edges[i][2];
-            graph[colid][rowid] = 1;
-            graph[rowid][colid] = 1;
+            // graph[colid][rowid] = 1;
+            // graph[rowid][colid] = 1;
         }
     }
     int findTheCity(int n, vector<vector<int>>& edges, int distanceThreshold) {
         int rows = edges.size();
-        vector<vector<int>> graph(n, vector<int>(n, 0));
-        vector<vector<int>> weights(n, vector<int>(n, INT_MAX));
+        // vector<vector<int>> graph(n, vector<int>(n, 0));
+        vector<vector<int>> weights(n, vector<int>(n, 10001));
         makeMatrix(edges, graph, weights);
         floydWarshall(weights, graph, n);
         printresult(weights);
@@ -63,4 +61,3 @@ public:
         return ans_id;
     }
 };
-
