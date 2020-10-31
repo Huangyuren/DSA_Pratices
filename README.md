@@ -1,3 +1,3 @@
 # DSA_Pratices
 ## Description
-Code for practicing Leetcode problems, containing graph algorithms implemented through frequently used C++ data structures.
+Code for practicing Leetcode problems, containing graph algorithms implemented by some C++ data structures.
