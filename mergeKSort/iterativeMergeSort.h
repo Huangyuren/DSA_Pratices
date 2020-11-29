@@ -1,7 +1,8 @@
 #include <bits/stdc++.h>
 #include <listNode.h>
-#ifndef _ITERATIVEMERGESORT_H_
-#define _ITERATIVEMERGESORT_H_ 
+// #ifndef _ITERATIVEMERGESORT_H_
+// #define _ITERATIVEMERGESORT_H_ 
+#pragma once
 using namespace std;
 
 /* struct ListNode {
@@ -52,7 +53,7 @@ public:
     }
 };
 
-#endif
+// #endif
 /* int main(int argc, char* argv[]) {
  *     IterMergeSolution varSol;
  *     vector<ListNode*> inputvec;
