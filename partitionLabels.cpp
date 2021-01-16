@@ -2,7 +2,7 @@
     Technique: using one set to represent current partition
     elements, and the key point is that once this set is
     empty, which means that there comes a minimalist set, so
-    we can parse out this partition safely. Nice.
+    we can parse out this partition safely.
  */
 class Solution {
 public:
