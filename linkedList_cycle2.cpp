@@ -12,7 +12,8 @@ public:
         if(head==nullptr) return nullptr;
         ListNode* fastptr = head->next;
         ListNode* slowptr = head;
-        // Finding loop is posible
+
+        // Checking loop exists or not
         while(fastptr != slowptr){
             if(fastptr==nullptr || slowptr==nullptr || fastptr->next==nullptr){
                 return nullptr;
@@ -20,7 +21,8 @@ public:
             fastptr = fastptr->next->next;
             slowptr = slowptr->next;
         }
-        //Ok, no loop, then check at which point will these two pointers meet.
+
+        // Ok, loop existing, then check at which point will these two pointers meet.
         fastptr = fastptr->next;
         slowptr = head;
         while(fastptr != slowptr){
