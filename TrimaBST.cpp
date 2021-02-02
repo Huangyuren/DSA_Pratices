@@ -1,5 +1,6 @@
 // When facing problems requiring pointer modification, often the case that we should
-// use a return value(pointer) to update current pointer!
+// use a return value(pointer) to update current pointer rather than using techniques
+// such as placeholder.
 // Here is how it works.
 
 /**
