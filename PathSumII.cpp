@@ -1,3 +1,4 @@
+// Commented with new thinkings
 /**
  * Definition for a binary tree node.
  * struct TreeNode {
@@ -11,35 +12,23 @@
  */
 class Solution {
 public:
-    void printUtil(vector<int>& vec){
-        for(int i=0; i<vec.size(); ++i){
-            printf("%d, ", vec[i]);
-        }
-    }
-    void findPath(TreeNode* root, int sum, vector<int>& path, vector<vector<int>>& res){
-        /*
-         * Actually, first if statement is for leaf position, leaf node will not enter other if stats.
-         * Suppose we are not at leaf node, we will try both last two if statements.
-         * path.pop_back() is for back-track, once this path reaches the end and we still not get desired sum.
-         * */
-        if(root == nullptr) return;
-        path.push_back(root->val);
-        if(root->val == sum && root->right==nullptr && root->left==nullptr) {
-            res.push_back(path);
-        }
-        if(root->right){
-            findPath(root->right, sum - root->val, path, res);
-        }
-        if(root->left){
-            findPath(root->left, sum-root->val, path, res);
-        }
-        path.pop_back();  //pop back to backtrack another potential answer.
-    }
-    vector<vector<int>> pathSum(TreeNode* root, int sum) {
-        if(root == nullptr) return{};
+    vector<vector<int>> pathSum(TreeNode* root, int targetSum) {
+        if(root == nullptr) return {};
         vector<vector<int>> res;
-        vector<int> path;
-        findPath(root, sum, path, res);
+        vector<int> curr;
+        solver(root, res, curr, targetSum);
         return res;
+    }
+    void solver(TreeNode* root, vector<vector<int>>& res, vector<int>& curr, int target){
+        if(root==nullptr) return;
+        curr.push_back(root->val); // no matter how, just push in.
+        if(root->val == target && root->left == nullptr && root->right == nullptr){
+            res.push_back(curr); // only when cumulated sum == target, will it be pushed into res.
+            // Cannot return, since we still have to pop_back()
+        }
+        if(root->left) solver(root->left, res, curr, target - root->val);
+        if(root->right) solver(root->right, res, curr, target - root->val);
+        curr.pop_back();
+        return;
     }
 };
