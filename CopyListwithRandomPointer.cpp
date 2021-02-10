@@ -19,7 +19,7 @@ public:
     Node* copyRandomList(Node* head) {
         if(head == nullptr) return nullptr;
         Node* dummy = head;
-        // append extra duplicated node right before original node.
+        // append extra duplicated node right after original node.
         while(dummy){
             Node* backup = dummy->next;
             Node* tmp = new Node(dummy->val);
