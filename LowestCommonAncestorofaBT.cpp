@@ -17,7 +17,7 @@ public:
         if(root == p || root == q) return root; // return either node p or q
         TreeNode* left = lowestCommonAncestor(root->left, p, q);
         TreeNode* right = lowestCommonAncestor(root->right, p, q);
-        if(left != nullptr && right != nullptr) return root; // division point, since left & right stem from this point
+        if(left != nullptr && right != nullptr) return root; // Most important code, division point, since left & right stem from this point
         if(left) return left;
         return right;
     }
