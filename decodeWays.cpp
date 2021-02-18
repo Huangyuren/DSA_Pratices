@@ -37,7 +37,11 @@
  *         return recur(s, 0, vec);
  *     }
  * }; */
+
 // Using dp
+// All the way to last element in s, then go back to starting point!
+// The key spirit is that index i is determined by i+1 & i+2
+// What left behind is indexing problem
 // Time: O(1), Space: O(n)
 class Solution {
 public:
@@ -60,7 +64,8 @@ public:
         return vec[0];
     }
 };
-// Using dp
+
+// Simplified dp
 // Time: O(1), space: O(1)!, need careful thinking.
 class Solution {
 public:
