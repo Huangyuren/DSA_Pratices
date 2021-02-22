@@ -2,6 +2,7 @@
 // Want to generate non-repeated random number in range(n)
 // Let all return value be restricted in myvec[] where myvec[i] = i, and actively swap, so that we wont return
 // repeated value.
+// Plain C random generator for specific range: https://stackoverflow.com/questions/7560114/random-number-c-in-some-range
 class RandomGenerator {
 
 private:
