@@ -30,7 +30,7 @@ public:
                     currstr[j] = currchar;
                 }
             }
-            res++;
+            res++;// Every iteration of neighborings exploring counts as one! So we can't add res in 1st for loop.
         }
         return 0;
     }
