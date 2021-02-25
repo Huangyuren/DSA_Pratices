@@ -23,7 +23,7 @@ public:
                 }
                 else
                 { // reset
-                    curleft = j+1;
+                    curleft = j+1; // Since we calculate area as right-left without + 1
                     left[j] = 0;
                 }
             }
@@ -42,7 +42,7 @@ public:
                 }
                 else
                 { // reset, 
-                    curight = j;
+                    curight = j;  // Since we calculate area as right-left without + 1
                     right[j] = col;
                 }
             }
