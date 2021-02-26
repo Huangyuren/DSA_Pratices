@@ -31,7 +31,7 @@ public:
             }
         }
         while(myqu.size()){
-            int currsize = myqu.size();
+            int currsize = myqu.size(); // Beware of BFS pattern
             for(int i=0; i<currsize; i++){
                 auto currpos = myqu.front(); myqu.pop();
                 for(int j=0; j<direction.size()-1; j++){
