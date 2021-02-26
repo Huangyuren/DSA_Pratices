@@ -21,5 +21,21 @@ public:
             }
         }
         return ans;
+//         Slower but clearer concepts
+//         sort(intervals.begin(), intervals.end(), [](vector<int>a, vector<int>b) -> bool{return a[0]<b[0];});
+//         vector<vector<int>> res;
+//         res.push_back(intervals[0]);
+//         for(int i=1; i<intervals.size(); i++){
+//             int& prevpostval = res.back()[1];
+//             int currfrontval = intervals[i][0];
+//             if(prevpostval < currfrontval){
+//                 res.push_back(intervals[i]); // OK, no overlapping
+//             }
+//             else
+//             {
+//                 prevpostval = max(prevpostval, intervals[i][1]); // Overlapped, Update previous second value
+//             }
+//         }
+//         return res;
     }
 };
