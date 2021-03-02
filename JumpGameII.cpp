@@ -5,13 +5,13 @@ public:
     int jump(vector<int>& nums) {
         // We can comprehend this solution: currendgoal is per-stride goal, so once reach, res should + 1
         // The stop condition would remain i == size-1
-        int res = 0, farthest = 0, currendgoal = 0;
-        for(int i=0; i<nums.size(); i++){ // may change to i<nums.size()-1
+        int farthest = 0, currend = 0, res = 0;
+        for(int i=0; i<nums.size(); i++){
             farthest = max(farthest, i+nums[i]);
-            if(i == currendgoal){ // once i reaches this queue level(current goal)
-                if(i == nums.size()-1) return res; // or still i<nums.size(), but add this line, more intuitive
+            if(i == nums.size()-1) return res; // Should return res as soon as possible to prevent possibility of res++
+            if(i == currend){
                 res++;
-                currendgoal = farthest; // current queue size
+                currend = farthest; // current queue size
             }
         }
         return res;
