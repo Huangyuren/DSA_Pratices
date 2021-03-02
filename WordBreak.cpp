@@ -12,9 +12,9 @@ public:
         for(int i=0; i<wordDict.size(); i++){
             mymap.emplace(wordDict[i], 1);
         }
-        vector<bool> dp(s.size()+1, false);
-        dp[0] = true;
-        for(int i=1; i<=s.size(); i++){
+        vector<bool> dp(s.size()+1, false); // With length s.size()+1, because of s.substr starting index
+        dp[0] = true; // initial condition
+        for(int i=1; i<=s.size(); i++){ // Since true will be assigned to dp[i]
             for(int j=i-1; j>=0; j--){
                 if(dp[j]){
                     string tmp = s.substr(j, i-j);
