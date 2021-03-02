@@ -13,6 +13,8 @@ public:
                 }
             }
         }
-        return dp[amount] <= amount ? dp[amount] : -1;
+        // amount stands for amount of 1 dollar
+        if(dp[amount] > amount) return -1;
+        return dp[amount];
     }
 };
