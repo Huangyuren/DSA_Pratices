@@ -17,11 +17,11 @@ public:
         priority_queue<pair<string, int>, vector<pair<string, int>>, mycomp> mypq;
         for(auto x : mymap){
             mypq.push({x.first, x.second});
-            if(mypq.size() > k) mypq.pop();
+            if(mypq.size() > k) mypq.pop(); // Time complexity: nlog(k), since heap will contain at most k elements
         }
         while(mypq.size()){
-            // res.push_back(mypq.top().first);
-            res.insert(res.begin(), mypq.top().first);
+            // printf("Element: %s\n", mypq.top().first.c_str());
+            res.insert(res.begin(), mypq.top().first); // why cannot use push_back?
             mypq.pop();
         }
         return res;
