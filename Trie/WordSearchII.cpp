@@ -15,6 +15,17 @@ private:
     TrieNode* root;
 public:
     Trie() : root(new TrieNode()) {}; // Declare a new trie node as initialization
+    ~Trie() {
+        delTree(root);
+    }
+    void delTree(TrieNode* root){
+        for(int i=0; i<26; i++){
+            if(root->children[i]){
+                delTree(root->children[i]);
+            }
+        }
+        free(root);
+    }
     TrieNode* getroot() {return root;}
     void insert(string word){
         TrieNode* parent = root;
