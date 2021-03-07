@@ -15,10 +15,10 @@ public:
             return;
         }
         if(leftcount < lim){
-            solver(res, currstr+'(', leftcount+1, rightcount, lim);
+            solver(res, currstr+'(', leftcount+1, rightcount, lim); // Directly pass into function parameters, not modifying variables
         }
         if(rightcount < leftcount){
-            solver(res, currstr+')', leftcount, rightcount+1, lim);
+            solver(res, currstr+')', leftcount, rightcount+1, lim); // Directly pass into function parameters, not modifying variables
         }
         return;
     }
