@@ -15,7 +15,7 @@ public:
         float currlongestime = 0;
         while(mypq.size()){
             auto tmp = mypq.top(); mypq.pop();
-            if(tmp.second > currlongestime){ // if the latter needs  time to go to target, another car fleet
+            if(tmp.second > currlongestime){ // if the latter needs more time to go to target, another car fleet
                 res++;
                 currlongestime = tmp.second;
             }
