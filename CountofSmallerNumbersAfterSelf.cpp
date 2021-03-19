@@ -1,3 +1,4 @@
+// by counting how many elements swapped from current val's right to left, we will get the answer
 class Solution {
 public:
     vector<int> countSmaller(vector<int>& nums) {
