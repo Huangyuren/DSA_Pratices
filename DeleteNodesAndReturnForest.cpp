@@ -18,6 +18,7 @@ public:
         solver(root, myset, res, true);
         return res;
     }
+    // Should update root's left & right child also!
     TreeNode* solver(TreeNode* root, unordered_set<int>& myset, vector<TreeNode*>& res, bool isroot){
         if(!root) return nullptr;
         bool deleteornot = myset.find(root->val) == myset.end() ? false : true;
