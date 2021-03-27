@@ -42,7 +42,6 @@ public:
         maze[start[0]][start[1]] = -1;
         while(myqu.size()){
             auto curr = myqu.front(); myqu.pop();
-            if(curr.first == destination[0] && curr.second == destination[1]) return true;
             for(int j=0; j<4; j++){
                 int tmpi = curr.first + dir[j], tmpj = curr.second + dir[j+1];
                 bool isin = false;
