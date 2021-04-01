@@ -7,7 +7,7 @@ public:
         vector<int> degree(numCourses, 0);
         vector<int> res; // resultant vector for whether can we traverse all nodes
         for(auto x : prerequisites){
-            graph[x[1]].push_back(x[0]);
+            graph[x[1]].push_back(x[0]); // Concept is that x[1] is prerequisite, so we should know how many courses need this x[1]
             degree[x[0]]++;
         }
         int n = numCourses; // checking for traversing all or not
@@ -20,6 +20,8 @@ public:
             n--; // traverse this node, so subtraction
             res.push_back(tmp);
             for(auto x : graph[tmp]){
+                // for all courses that need this x course as prerequisite
+                // Now x is popped, so their degree should -1
                 degree[x]--;
                 if(degree[x] == 0){
                     myqu.push(x);
