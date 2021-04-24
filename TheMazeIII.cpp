@@ -17,12 +17,12 @@ class Solution {
 public:
     string findShortestWay(vector<vector<int>>& maze, vector<int>& ball, vector<int>& hole) {
         m = maze.size(); n=maze[0].size();
-        vector<vector<bool>> visited(m, vector<bool>(n, false)); // visited array is optional, but using it makes this algo more like dijkstra
+        vector<vector<bool>> visited(m, vector<bool>(n, false)); // using one visited array to check validity
         priority_queue<mynode, vector<mynode>, mycompare> mypq;
         mypq.push(mynode(ball[0], ball[1], 0, ""));
         while(mypq.size()){
             auto curr = mypq.top(); mypq.pop();
-            visited[curr.i][curr.j] = true;
+            visited[curr.i][curr.j] = true; // Should set visited to true ONLY when item is popped from pq
             if(curr.i == hole[0] && curr.j == hole[1]) return curr.path;
             for(int j=0; j<4; j++){
                 int tmpi = curr.i, tmpj = curr.j, tmpdist = curr.dist;
@@ -37,6 +37,7 @@ public:
                 }
                 if(!visited[tmpi][tmpj]){
                     mypq.push(mynode(tmpi, tmpj, tmpdist, tmpstr + mapping[j]));
+                    // NO visited[tmpi][tmpj] = true; here, since it will mislead shortest path criteria
                 }
             }
         }
