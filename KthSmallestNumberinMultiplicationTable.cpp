@@ -2,7 +2,7 @@
 class Solution {
 public:
     int findKthNumber(int m, int n, int k) {
-        int left = 0;
+        int left = 0; // left initially at zero
         int right = m*n+1; // right should be larger enough, othrewise left will easily exceed right
         int mid = 0;
         while(left < right){ // no =
@@ -15,9 +15,10 @@ public:
                 left = mid+1; // left with mid + 1
             }
         }
-        return right;
+        return right; // should return right
     }
     int partition(int mid, int m, int n){
+        // given x, tell me x is ?-th largest in this table
         int res = 0;
         for(int i=1; i<=m; i++){
             int tmp = min(n, mid/i); // We only need to count "how many elements can be divided by current row number"
