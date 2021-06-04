@@ -1,42 +1,24 @@
-// char Toggling plus can solve this.
+// Simple stack solution that compute res on the fly, O(n)
 class Solution {
 public:
     int longestValidParentheses(string s) {
         if(s.empty()) return 0;
-        int n = s.size();
         stack<int> mystack;
-        for(int i=0; i<n; i++){
+        mystack.push(-1); // default value
+        int n = s.size();
+        int res = 0;
+        for(int i=0; i<n; i++) {
             if(s[i] == '('){
                 mystack.push(i);
-            }
-            else if(s[i] == ')'){
+            }else{
+                mystack.pop();
                 if(mystack.empty()){
-                    s[i] = '*';
-                }
-                else
-                {
-                    mystack.pop();
+                    mystack.push(i);
+                }else{
+                    res = max(res, i - mystack.top());
                 }
             }
         }
-        while(mystack.size()){
-            int curridx = mystack.top();
-            s[curridx] = '*';
-            mystack.pop();
-        }
-        int currcounter = 0;
-        int res = 0;
-        for(int i=0; i<n; i++){
-            if(s[i] == '*'){
-                res = max(res, currcounter);
-                currcounter = 0;
-            }
-            else
-            {
-                currcounter++;
-            }
-        }
-        res = max(res, currcounter);
         return res;
     }
 };
